@@ -12,6 +12,6 @@ class CreateTeamsUsersJoin < ActiveRecord::Migration[6.1]
   end
 
   def down
-    delete_table :teams_users
+    drop_table :teams_users
   end
 end

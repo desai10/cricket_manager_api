@@ -12,6 +12,6 @@ class CreateTeamsTournamentsJoin < ActiveRecord::Migration[6.1]
   end
 
   def down
-    delete_table :teams_tournaments
+    drop_table :teams_tournaments
   end
 end
