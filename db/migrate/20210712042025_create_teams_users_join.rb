@@ -7,10 +7,11 @@ class CreateTeamsUsersJoin < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    
     add_index("teams_users", ["team_id", "user_id"])
+  end
 
-    def down
-      delete_table :teams_users
-    end
+  def down
+    delete_table :teams_users
   end
 end

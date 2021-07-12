@@ -5,10 +5,13 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'teams/:id/add_user/:user_id' => 'teams#add_user'
       post 'teams/:id/add_users' => 'teams#add_users'
+      post 'tournaments/:id/add_team/:team_id' => 'tournaments#add_team'
+      post 'tournaments/:id/add_teams' => 'tournaments#add_teams'
       delete 'users/:id/leave_team/:team_id' => 'users#leave_team'
       delete 'teams/:id/remove_user/:user_id' => 'teams#remove_user'
       resources :users
       resources :teams
+      resources :tournaments
     end
   end
 end
