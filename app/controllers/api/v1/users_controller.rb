@@ -8,7 +8,7 @@ class Api::V1::UsersController < ApplicationController
             if @team
                 @user.teams.delete(@team)
                 if @user.save
-                    render json: @user.teams
+                    render json: @user, include: [:teams]
                 else
                     render error: {error: "Unable to update user."}, status: 400
                 end
@@ -22,17 +22,17 @@ class Api::V1::UsersController < ApplicationController
 
     def index
         @users = User.all
-        render json: @users
+        render json: @users, include: [:teams]
     end
 
     def show
-        render json: @user
+        render json: @user, include: [:teams]
     end
 
     def create
         @user = User.new(user_params)
         if @user.save
-            render json: @user
+            render json: @user, include: [:teams]
         else
             render error: {error: 'Unable to create user'}, status: 400
         end

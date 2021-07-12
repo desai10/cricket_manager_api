@@ -7,7 +7,7 @@ class Api::V1::TeamsController < ApplicationController
             if @user
                 @team.users << @user
                 if @team.save
-                    render json: @team.users
+                    render json: @team, include: [:users]
                 else
                     render error: {error: 'Unable to update team'}, status: 400
                 end
@@ -30,7 +30,7 @@ class Api::V1::TeamsController < ApplicationController
                 end
             end
             if @team.save
-                render json: @team.users
+                render json: @team, include: [:users]
             else
                 render error: {error: 'Unable to update team'}, status: 400
             end
@@ -45,7 +45,7 @@ class Api::V1::TeamsController < ApplicationController
             if @user
                 @team.users.delete(@user)
                 if @team.save
-                    render json: @team.users
+                    render json: @team, include: [:users]
                 else
                     render error: {error: 'Unable to update team'}, status: 400
                 end
@@ -59,17 +59,17 @@ class Api::V1::TeamsController < ApplicationController
 
     def index
         @teams = Team.all
-        render json: @teams
+        render json: @teams, include: [:users]
     end
 
     def show
-        render json: @team
+        render json: @team, include: [:users]
     end
 
     def create
         @team = Team.new(team_params)
         if @team.save
-            render json: @team
+            render json: @team, include: [:users]
         else
             render error: {error: 'Unable to create team'}, status: 400
         end

@@ -8,7 +8,7 @@ class Api::V1::TournamentsController < ApplicationController
             if @team
                 @tournament.teams << @team
                 if @tournament.save
-                    render json: @tournament.teams
+                    render json: @tournament, include: [:teams]
                 else
                     render error: {error: 'Unable to update tournament'}, status: 400
                 end
@@ -31,7 +31,7 @@ class Api::V1::TournamentsController < ApplicationController
                 end
             end
             if @tournament.save
-                render json: @tournament.teams
+                render json: @tournament, include: [:teams]
             else
                 render error: {error: 'Unable to update tournament'}, status: 400
             end
@@ -42,17 +42,17 @@ class Api::V1::TournamentsController < ApplicationController
 
     def index
         @tournaments = tournament.all
-        render json: @tournaments
+        render json: @tournaments, include: [:teams]
     end
 
     def show
-        render json: @tournament
+        render json: @tournament, include: [:teams]
     end
 
     def create
         @tournament = tournament.new(tournament_params)
         if @tournament.save
-            render json: @tournament
+            render json: @tournament, include: [:teams]
         else
             render error: {error: 'Unable to create tournament'}, status: 400
         end
