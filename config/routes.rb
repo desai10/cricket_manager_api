@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      post 'matches/:id/start_innings' => 'matches#start_innings'
+      post 'matches/:id/toss' => 'matches#toss'
       post 'teams/:id/add_user/:user_id' => 'teams#add_user'
       post 'teams/:id/add_users' => 'teams#add_users'
       post 'tournaments/:id/add_team/:team_id' => 'tournaments#add_team'
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
       resources :users
       resources :teams
       resources :tournaments
+      resources :matches
     end
   end
 end

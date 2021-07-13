@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deliveries: one
+  team: one
+  score: 1
+  wickets: 1
+  strike_batsman: one
+  non_strike_batsman: one
+  bowler: one
+  in_progress: false
+
+two:
+  deliveries: two
+  team: two
+  score: 1
+  wickets: 1
+  strike_batsman: two
+  non_strike_batsman: two
+  bowler: two
+  in_progress: false

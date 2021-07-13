@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  bowler: one
+  batsman: one
+  helped_by: one
+  action: MyString
+
+two:
+  number: MyString
+  bowler: two
+  batsman: two
+  helped_by: two
+  action: MyString
